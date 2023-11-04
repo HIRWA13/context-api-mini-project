@@ -1,0 +1,40 @@
+.age-form {
+    display: flex;
+    gap: 5px;
+}
+
+.inputs-container {
+    padding: 20px 30px 20px 0px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    border-bottom: 1px solid black;
+}
+.inputs {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+}
+.inputs label {
+    font-size: 18px;
+    color:  hsl(0, 0%, 8%);
+    font-weight: 400;
+}
+.inputs input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid black;
+    font-size: 1.2rem;
+    outline: none;
+    font-weight: 700;
+}
+
+.age-form button {
+    padding: 10px;
+    background-color: hsl(259, 100%, 65%);
+    color: #ffffff;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    margin-top: 50px;
+}

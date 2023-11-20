@@ -1,17 +1,14 @@
-const calculateAge = (day, month, year) => {
-    const days = parseInt(day);
-    const months = parseInt(month);
-    const years = parseInt(year);
+export const calculateAge = (day, month, year) => {
 
-    const today = new Date();
-    const currentYear = today.getFullYear();
-    const currentMonth = today.getMonth();
+    const today = 31;
+    const currentYear = new Date().getFullYear();
 
-    const ageYears = currentYear - years;
-    const ageMonths = currentMonth - months;
-    const ageDays = today.getDate() - days;
-
+    const ageYears = currentYear - parseInt(year);
+    const ageMonths = new Date().getMonth() - parseInt(month);
+    const ageDays = today - parseInt(day);
+    
+    console.log(today)
     return {ageDays, ageMonths, ageYears}
 }
 
-console.log(calculateAge(1, 1, 1990))
+console.log(calculateAge(8, 10, 1998))

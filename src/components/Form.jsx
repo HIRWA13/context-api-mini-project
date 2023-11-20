@@ -2,20 +2,31 @@ import "./Form.css";
 import iconarrow from "../assets/iconarrow.svg";
 import { useContext, useRef } from "react";
 import { AgeContext } from "../context/AgeContext";
+import { calculateAge } from "../utils/calculateAge";
 
 export default function Form() {
   const {age, setAge} = useContext(AgeContext);
+  const currentYear = new Date().getFullYear();
+
   const dayInputRef = useRef(age.name);
   const monthInputRef = useRef(age.month);
   const yearInputRef = useRef(age.year);
 
+
+
   const AgeCalculatorHandler = (e) => {
     e.preventDefault();
+    const day = dayInputRef.current.value;
+    const month = monthInputRef.current.value;
+    const year = yearInputRef.current.value;
+
+    const result = calculateAge(day, month, year)
+    console.log(result)
     setAge(()=> {
       return {
-        day: dayInputRef.current.value,
-        month: monthInputRef.current.value,
-        year: yearInputRef.current.value
+        day: result.ageDays,
+        month: result.ageMonths,
+        year: result.ageYears
       }
     })
     dayInputRef.current.value = ''
@@ -31,7 +42,8 @@ export default function Form() {
           <input 
               type="number" 
               id="name"
-              min={0} 
+              min={1} 
+              max={31}
               placeholder="DD"
               ref={dayInputRef}
               />
@@ -41,7 +53,8 @@ export default function Form() {
           <input 
               type="number" 
               id="name"
-              min={0} 
+              min={1} 
+              max={12}
               placeholder="MM"
               ref={monthInputRef}
               />
@@ -51,9 +64,10 @@ export default function Form() {
           <input 
               type="number" 
               id="name"
-              min={0} 
+              min={1000} 
               placeholder="YYYY"
               ref={yearInputRef}
+              max={currentYear}
               />
         </div>
       </div>
